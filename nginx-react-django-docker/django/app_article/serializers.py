@@ -20,18 +20,11 @@ class UserSerializer(serializers.ModelSerializer):
         
 
 class ArticlesSerializer(serializers.ModelSerializer):
-    author = serializers.SerializerMethodField()
-    category = serializers.SerializerMethodField()
-    timesince = serializers.DateTimeField()
-    
-    def get_author(self, obj):
-        return {'name': obj.author.first_name + ' ' + obj.author.last_name}
-    def get_category(self, obj):
-        return {'category': obj.category.category}
-        
+       
     class Meta:
         model = NewsModel
         fields = '__all__'
+
         
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
